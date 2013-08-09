@@ -13,7 +13,15 @@ class ClientsController < ApplicationController
       render :json => {:code => 1, :msg => "Could not find client #{params[:client_query]}"}
     end
   end
-  
+
+  def history
+    client_history = Client.arb_query("clients/#{params[:client_name]}/history")
+    if client_history
+      render :json => {:code => 0, :length => client_history.length,  :data => render_to_string(:action => "_history_modal", :layout => false, :locals => {:client_history => client_history})}
+    else
+      render :json => {:code => 1, :msg => "Could not find any checks for #{params[:client_name]}"}
+    end
+  end
   def delete_client
     resp = Client.destroy(params[:key])
     Client.refresh_cache

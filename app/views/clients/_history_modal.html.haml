@@ -1,0 +1,37 @@
+%div.modal-header
+  %h3== All Checks
+-#%div.modal-body
+-#  %table.table.table-striped.table-bordered
+-#    %tbody
+-#      - client_history.each do |e|
+-#
+-#        - e.attributes.each do |k,v|
+-#          %tr
+-#            %td= k
+-#            %td= v
+%table.table-striped.dataTable.clients_table.table{:id => "clients_history_table"}
+  %thead
+    %th Check Name
+    %th History
+    %th Time Ago
+    %th Last status
+
+
+  %tbody
+    - count = 0
+    - client_history.each do |c|
+      - history = ''
+
+      - c.history.each do |e|
+        - history += e.to_s + ','
+
+      - history = history.chomp(',')
+
+      %tr{:id => "client_row_#{c.check}_history", :rel => c.check}
+        %td
+          %strong= c.check
+        %td
+          %span{:class=>"bar"}= history
+        %td= time_ago_in_words(Time.at(c.last_execution))
+        %td= c.last_status
+        - count += 1

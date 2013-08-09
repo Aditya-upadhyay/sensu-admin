@@ -39,6 +39,7 @@ SensuAdmin::Application.routes.draw do
   scope 'clients' do
     match '/delete_client' => 'clients#delete_client', :via => :post
     match '/modal_data' => 'clients#modal_data', :via => :get
+    match '/history' => 'clients#history', :via => :get
   end
 
   namespace :api do

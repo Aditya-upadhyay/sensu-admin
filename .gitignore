@@ -8,7 +8,7 @@
 /.bundle
 
 config.yml
-
+.idea/*
 # Ignore the default SQLite database.
 /db/*.sqlite3
 

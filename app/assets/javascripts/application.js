@@ -20,3 +20,5 @@
 //= require datepair
 //= require jquery.timepicker
 //= require bootstrap-datepicker
+//= require jquery.peity.min
+

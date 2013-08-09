@@ -12,6 +12,9 @@ class Client < Resting
     clients
   end
 
+  def self.arb_query(path)
+    get(path)
+  end
   def self.refresh_cache
     Rails.cache.write("clients", Client.all, :expires_in => 30.seconds, :race_condition_ttl => 10)
   end
