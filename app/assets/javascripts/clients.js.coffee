@@ -20,10 +20,10 @@ $ ->
     (data) ->
       if data.code == 0
         $('#client_history-data-modal').html(data['data'])
-        $(".bar").peity("bar", {
-          width: 100
-          height: 100
-        });
+#        $(".bar").peity("bar", {
+#          width: 100
+#          height: 100
+#        });
         $('#client_history-data-modal').modal("show")
 
       else
